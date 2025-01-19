@@ -42,20 +42,20 @@ class Player extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				PlayerID LIKE ?  OR 
-				PlayerNameNepali LIKE ?  OR 
-				PlayerNameEnglish LIKE ?  OR 
-				PermanentAddress LIKE ?  OR 
-				TemporaryAddress LIKE ?  OR 
-				CitizenshipNo LIKE ?  OR 
-				Qualification LIKE ?  OR 
-				SchoolName LIKE ?  OR 
-				PlayerContact LIKE ?  OR 
-				FathersName LIKE ?  OR 
-				MothersName LIKE ?  OR 
-				ParentsContact LIKE ?  OR 
-				CoachName LIKE ?  OR 
-				CoachContact LIKE ? 
+				player.PlayerID LIKE ?  OR 
+				player.PlayerNameNepali LIKE ?  OR 
+				player.PlayerNameEnglish LIKE ?  OR 
+				player.PermanentAddress LIKE ?  OR 
+				player.TemporaryAddress LIKE ?  OR 
+				player.CitizenshipNo LIKE ?  OR 
+				player.Qualification LIKE ?  OR 
+				player.SchoolName LIKE ?  OR 
+				player.PlayerContact LIKE ?  OR 
+				player.FathersName LIKE ?  OR 
+				player.MothersName LIKE ?  OR 
+				player.ParentsContact LIKE ?  OR 
+				player.CoachName LIKE ?  OR 
+				player.CoachContact LIKE ? 
 		)';
 		$search_params = [
 			"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
@@ -73,53 +73,51 @@ class Player extends Model
      */
 	public static function listFields(){
 		return [ 
-			"PlayerID AS playerid",
+			"player.PlayerID AS playerid",
 
-			"SportsID AS sportsid",
+			"player.SportsID AS sportsid",
 
-			"PlayerNameNepali AS playernamenepali",
+			"sports.sportsname AS sports_sportsname",
 
-			"PlayerNameEnglish AS playernameenglish",
+			"player.PlayerNameNepali AS playernamenepali",
 
-			"PermanentAddress AS permanentaddress",
+			"player.PlayerNameEnglish AS playernameenglish",
 
-			"TemporaryAddress AS temporaryaddress",
+			"player.PermanentAddress AS permanentaddress",
 
-			"DOB AS dob",
+			"player.TemporaryAddress AS temporaryaddress",
 
-			"CitizenshipNo AS citizenshipno",
+			"player.DOB AS dob",
 
-			"Qualification AS qualification",
+			"player.CitizenshipNo AS citizenshipno",
 
-			"Weight AS weight",
+			"player.Qualification AS qualification",
 
-			"Height AS height",
+			"player.Weight AS weight",
 
-			"SchoolName AS schoolname",
+			"player.Height AS height",
 
-			"PlayerContact AS playercontact",
+			"player.SchoolName AS schoolname",
 
-			"FathersName AS fathersname",
+			"player.PlayerContact AS playercontact",
 
-			"MothersName AS mothersname",
+			"player.FathersName AS fathersname",
 
-			"ParentsContact AS parentscontact",
+			"player.MothersName AS mothersname",
 
-			"CoachName AS coachname",
+			"player.ParentsContact AS parentscontact",
 
-			"CoachContact AS coachcontact",
+			"player.CoachName AS coachname",
 
-			"Signature AS signature",
+			"player.CoachContact AS coachcontact",
 
-			"Photo AS photo",
+			"player.Signature AS signature",
 
-			"IsApproved AS isapproved",
+			"player.Photo AS photo",
 
-			"uid",
+			"player.IsApproved AS isapproved",
 
-			"date_created",
-
-			"date_updated" 
+			"player.uid AS uid" 
 		];
 	}
 
@@ -132,53 +130,51 @@ class Player extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"PlayerID AS playerid",
+			"player.PlayerID AS playerid",
 
-			"SportsID AS sportsid",
+			"player.SportsID AS sportsid",
 
-			"PlayerNameNepali AS playernamenepali",
+			"sports.sportsname AS sports_sportsname",
 
-			"PlayerNameEnglish AS playernameenglish",
+			"player.PlayerNameNepali AS playernamenepali",
 
-			"PermanentAddress AS permanentaddress",
+			"player.PlayerNameEnglish AS playernameenglish",
 
-			"TemporaryAddress AS temporaryaddress",
+			"player.PermanentAddress AS permanentaddress",
 
-			"DOB AS dob",
+			"player.TemporaryAddress AS temporaryaddress",
 
-			"CitizenshipNo AS citizenshipno",
+			"player.DOB AS dob",
 
-			"Qualification AS qualification",
+			"player.CitizenshipNo AS citizenshipno",
 
-			"Weight AS weight",
+			"player.Qualification AS qualification",
 
-			"Height AS height",
+			"player.Weight AS weight",
 
-			"SchoolName AS schoolname",
+			"player.Height AS height",
 
-			"PlayerContact AS playercontact",
+			"player.SchoolName AS schoolname",
 
-			"FathersName AS fathersname",
+			"player.PlayerContact AS playercontact",
 
-			"MothersName AS mothersname",
+			"player.FathersName AS fathersname",
 
-			"ParentsContact AS parentscontact",
+			"player.MothersName AS mothersname",
 
-			"CoachName AS coachname",
+			"player.ParentsContact AS parentscontact",
 
-			"CoachContact AS coachcontact",
+			"player.CoachName AS coachname",
 
-			"Signature AS signature",
+			"player.CoachContact AS coachcontact",
 
-			"Photo AS photo",
+			"player.Signature AS signature",
 
-			"IsApproved AS isapproved",
+			"player.Photo AS photo",
 
-			"uid",
+			"player.IsApproved AS isapproved",
 
-			"date_created",
-
-			"date_updated" 
+			"player.uid AS uid" 
 		];
 	}
 
@@ -233,11 +229,9 @@ class Player extends Model
 
 			"IsApproved AS isapproved",
 
-			"uid",
+			"date_updated",
 
-			"date_created",
-
-			"date_updated" 
+			"uid" 
 		];
 	}
 
@@ -292,11 +286,9 @@ class Player extends Model
 
 			"IsApproved AS isapproved",
 
-			"uid",
+			"date_updated",
 
-			"date_created",
-
-			"date_updated" 
+			"uid" 
 		];
 	}
 
@@ -309,8 +301,6 @@ class Player extends Model
      */
 	public static function editFields(){
 		return [ 
-			"PlayerID AS playerid",
-
 			"SportsID AS sportsid",
 
 			"PlayerNameNepali AS playernamenepali",
@@ -349,7 +339,9 @@ class Player extends Model
 
 			"Photo AS photo",
 
-			"IsApproved AS isapproved" 
+			"IsApproved AS isapproved",
+
+			"PlayerID AS playerid" 
 		];
 	}
 }

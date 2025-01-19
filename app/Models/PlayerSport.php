@@ -42,8 +42,8 @@ class PlayerSport extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				PlayerSportID LIKE ?  OR 
-				Location LIKE ? 
+				player_sport.Location LIKE ?  OR 
+				player_sport.PlayerSportID LIKE ? 
 		)';
 		$search_params = [
 			"%$text%","%$text%"
@@ -61,17 +61,21 @@ class PlayerSport extends Model
      */
 	public static function listFields(){
 		return [ 
-			"PlayerSportID AS playersportid",
+			"player_sport.PlayerID AS playerid",
 
-			"PlayerID AS playerid",
+			"player.playernamenepali AS player_playernamenepali",
 
-			"SportsID AS sportsid",
+			"player_sport.SportsID AS sportsid",
 
-			"Date AS date",
+			"sports.sportsname AS sports_sportsname",
 
-			"Location AS location",
+			"player_sport.Date AS date",
 
-			"uid" 
+			"player_sport.Location AS location",
+
+			"player_sport.PlayerSportID AS playersportid",
+
+			"player_sport.uid AS uid" 
 		];
 	}
 
@@ -84,40 +88,21 @@ class PlayerSport extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"PlayerSportID AS playersportid",
+			"player_sport.PlayerID AS playerid",
 
-			"PlayerID AS playerid",
+			"player.playernamenepali AS player_playernamenepali",
 
-			"SportsID AS sportsid",
+			"player_sport.SportsID AS sportsid",
 
-			"Date AS date",
+			"sports.sportsname AS sports_sportsname",
 
-			"Location AS location",
+			"player_sport.Date AS date",
 
-			"uid" 
-		];
-	}
+			"player_sport.Location AS location",
 
-	
+			"player_sport.PlayerSportID AS playersportid",
 
-	/**
-     * return view page fields of the model.
-     * 
-     * @return array
-     */
-	public static function viewFields(){
-		return [ 
-			"PlayerSportID AS playersportid",
-
-			"PlayerID AS playerid",
-
-			"SportsID AS sportsid",
-
-			"Date AS date",
-
-			"Location AS location",
-
-			"uid" 
+			"player_sport.uid AS uid" 
 		];
 	}
 
@@ -130,17 +115,6 @@ class PlayerSport extends Model
      */
 	public static function exportViewFields(){
 		return [ 
-			"PlayerSportID AS playersportid",
-
-			"PlayerID AS playerid",
-
-			"SportsID AS sportsid",
-
-			"Date AS date",
-
-			"Location AS location",
-
-			"uid" 
 		];
 	}
 
@@ -153,15 +127,15 @@ class PlayerSport extends Model
      */
 	public static function editFields(){
 		return [ 
-			"PlayerSportID AS playersportid",
-
 			"PlayerID AS playerid",
 
 			"SportsID AS sportsid",
 
 			"Date AS date",
 
-			"Location AS location" 
+			"Location AS location",
+
+			"PlayerSportID AS playersportid" 
 		];
 	}
 }

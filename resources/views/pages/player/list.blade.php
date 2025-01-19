@@ -104,9 +104,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-signature" > Signature</th>
                                         <th class="td-photo" > Photo</th>
                                         <th class="td-isapproved" > Isapproved</th>
-                                        <th class="td-uid" > Uid</th>
-                                        <th class="td-date_created" > Date Created</th>
-                                        <th class="td-date_updated" > Date Updated</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -141,8 +138,8 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <a href="<?php print_link("/player/view/$data[playerid]") ?>"><?php echo $data['playerid']; ?></a>
                                         </td>
                                         <td class="td-sportsid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
-                                            <i class="material-icons">visibility</i> <?php echo "Sports" ?>
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports//$data[sportsid]?subpage=1") ?>">
+                                            <?php echo $data['sports_sportsname'] ?>
                                         </a>
                                     </td>
                                     <td class="td-playernamenepali">
@@ -194,25 +191,34 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <?php echo  $data['coachcontact'] ; ?>
                                     </td>
                                     <td class="td-signature">
-                                        <?php echo  $data['signature'] ; ?>
+                                        <?php 
+                                            Html :: page_img($data['signature'], '50px', '50px', "small", 1); 
+                                        ?>
                                     </td>
                                     <td class="td-photo">
                                         <?php 
                                             Html :: page_img($data['photo'], '50px', '50px', "small", 1); 
                                         ?>
                                     </td>
-                                    <td class="td-isapproved">
-                                        <?php echo  $data['isapproved'] ; ?>
-                                    </td>
-                                    <td class="td-uid">
-                                        <?php echo  $data['uid'] ; ?>
-                                    </td>
-                                    <td class="td-date_created">
-                                        <?php echo  $data['date_created'] ; ?>
-                                    </td>
-                                    <td class="td-date_updated">
-                                        <?php echo  $data['date_updated'] ; ?>
-                                    </td>
+                                    <td class="td-isapproved"><?php
+                                        switch ($data['isapproved']) {
+                                        case 0:
+                                        echo 'Not Checked';
+                                        break;
+                                        case 1:
+                                        echo 'Approved';
+                                        break;
+                                        case 2:
+                                        echo 'Pending';
+                                        break;
+                                        case 3:
+                                        echo 'Not Approved';
+                                        break;
+                                        default:
+                                        echo 'Invalid Status';
+                                        break;
+                                        }
+                                    ?></td>
                                     <!--PageComponentEnd-->
                                     <td class="td-btn">
                                         <div class="dropdown" >

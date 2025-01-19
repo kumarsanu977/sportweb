@@ -27,6 +27,7 @@ class PlayerController extends Controller
 			$search = trim($request->search);
 			Player::search($query, $search); // search table records
 		}
+		$query->join("sports", "player.sportsid", "=", "sports.SportsID");
 		$orderby = $request->orderby ?? "player.playerid";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);

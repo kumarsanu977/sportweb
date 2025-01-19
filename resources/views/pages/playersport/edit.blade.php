@@ -52,7 +52,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <select required=""  id="ctrl-playerid" data-field="playerid" name="playerid"  placeholder="Select a value ..."    class="form-select" >
                                             <option value="">Select a value ...</option>
                                             <?php
-                                                $options = $comp_model->playerid_option_list() ?? [];
+                                                $options = $comp_model->playersport_playerid_option_list() ?? [];
                                                 foreach($options as $option){
                                                 $value = $option->value;
                                                 $label = $option->label ?? $value;

@@ -26,10 +26,10 @@ class PlayerAchievementsEditRequest extends FormRequest
         return [
             
 				"playerid" => "filled",
-				"sportid" => "filled|numeric",
+				"sportid" => "filled",
 				"date" => "filled|date",
 				"medal" => "nullable|string",
-				"certificate" => "nullable|string",
+				"certificate" => "nullable",
             
         ];
     }

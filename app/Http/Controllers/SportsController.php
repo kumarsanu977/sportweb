@@ -39,28 +39,6 @@ class SportsController extends Controller
 	
 
 	/**
-     * Select table record by ID
-	 * @param string $rec_id
-     * @return \Illuminate\View\View
-     */
-	function view($rec_id = null){
-		$query = Sports::query();
-		$record = $query->findOrFail($rec_id, Sports::viewFields());
-		return $this->renderView("pages.sports.view", ["data" => $record]);
-	}
-	
-
-	/**
-     * Display Master Detail Pages
-	 * @param string $rec_id //master record id
-     * @return \Illuminate\View\View
-     */
-	function masterDetail($rec_id = null){
-		return View("pages.sports.detail-pages", ["masterRecordId" => $rec_id]);
-	}
-	
-
-	/**
      * Display form page
      * @return \Illuminate\View\View
      */

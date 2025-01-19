@@ -42,9 +42,9 @@ class PlayerAchievements extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				PrizeID LIKE ?  OR 
-				Medal LIKE ?  OR 
-				Certificate LIKE ? 
+				player_achievements.Medal LIKE ?  OR 
+				player_achievements.Certificate LIKE ?  OR 
+				player_achievements.PrizeID LIKE ? 
 		)';
 		$search_params = [
 			"%$text%","%$text%","%$text%"
@@ -62,19 +62,23 @@ class PlayerAchievements extends Model
      */
 	public static function listFields(){
 		return [ 
-			"PrizeID AS prizeid",
+			"player_achievements.PlayerID AS playerid",
 
-			"PlayerID AS playerid",
+			"player.playernamenepali AS player_playernamenepali",
 
-			"sportid",
+			"player_achievements.sportid AS sportid",
 
-			"Date AS date",
+			"sports.sportsname AS sports_sportsname",
 
-			"Medal AS medal",
+			"player_achievements.Date AS date",
 
-			"Certificate AS certificate",
+			"player_achievements.Medal AS medal",
 
-			"uid" 
+			"player_achievements.Certificate AS certificate",
+
+			"player_achievements.PrizeID AS prizeid",
+
+			"player_achievements.uid AS uid" 
 		];
 	}
 
@@ -87,44 +91,23 @@ class PlayerAchievements extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"PrizeID AS prizeid",
+			"player_achievements.PlayerID AS playerid",
 
-			"PlayerID AS playerid",
+			"player.playernamenepali AS player_playernamenepali",
 
-			"sportid",
+			"player_achievements.sportid AS sportid",
 
-			"Date AS date",
+			"sports.sportsname AS sports_sportsname",
 
-			"Medal AS medal",
+			"player_achievements.Date AS date",
 
-			"Certificate AS certificate",
+			"player_achievements.Medal AS medal",
 
-			"uid" 
-		];
-	}
+			"player_achievements.Certificate AS certificate",
 
-	
+			"player_achievements.PrizeID AS prizeid",
 
-	/**
-     * return view page fields of the model.
-     * 
-     * @return array
-     */
-	public static function viewFields(){
-		return [ 
-			"PrizeID AS prizeid",
-
-			"PlayerID AS playerid",
-
-			"sportid",
-
-			"Date AS date",
-
-			"Medal AS medal",
-
-			"Certificate AS certificate",
-
-			"uid" 
+			"player_achievements.uid AS uid" 
 		];
 	}
 
@@ -137,19 +120,6 @@ class PlayerAchievements extends Model
      */
 	public static function exportViewFields(){
 		return [ 
-			"PrizeID AS prizeid",
-
-			"PlayerID AS playerid",
-
-			"sportid",
-
-			"Date AS date",
-
-			"Medal AS medal",
-
-			"Certificate AS certificate",
-
-			"uid" 
 		];
 	}
 
@@ -162,8 +132,6 @@ class PlayerAchievements extends Model
      */
 	public static function editFields(){
 		return [ 
-			"PrizeID AS prizeid",
-
 			"PlayerID AS playerid",
 
 			"sportid",
@@ -172,7 +140,9 @@ class PlayerAchievements extends Model
 
 			"Medal AS medal",
 
-			"Certificate AS certificate" 
+			"Certificate AS certificate",
+
+			"PrizeID AS prizeid" 
 		];
 	}
 }

@@ -68,7 +68,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <span class="fw-bold">Loading...</span>
                                 </div>
                             </div>
-                            <?php Html::page_bread_crumb("/playerachievements/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
                                 <?php Html::filter_tag('search', __('Search')); ?>
@@ -83,13 +82,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-prizeid" > Prizeid</th>
                                         <th class="td-playerid" > Playerid</th>
                                         <th class="td-sportid" > Sportid</th>
                                         <th class="td-date" > Date</th>
                                         <th class="td-medal" > Medal</th>
                                         <th class="td-certificate" > Certificate</th>
-                                        <th class="td-uid" > Uid</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -120,41 +117,34 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <?php } ?>
                                         <!--PageComponentStart-->
-                                        <td class="td-prizeid">
-                                            <a href="<?php print_link("/playerachievements/view/$data[prizeid]") ?>"><?php echo $data['prizeid']; ?></a>
-                                        </td>
                                         <td class="td-playerid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("player/view/$data[playerid]?subpage=1") ?>">
-                                            <i class="material-icons">visibility</i> <?php echo "Player" ?>
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player//$data[playerid]?subpage=1") ?>">
+                                            <?php echo $data['player_playernamenepali'] ?>
                                         </a>
                                     </td>
                                     <td class="td-sportid">
-                                        <?php echo  $data['sportid'] ; ?>
-                                    </td>
-                                    <td class="td-date">
-                                        <?php echo  $data['date'] ; ?>
-                                    </td>
-                                    <td class="td-medal">
-                                        <?php echo  $data['medal'] ; ?>
-                                    </td>
-                                    <td class="td-certificate">
-                                        <?php echo  $data['certificate'] ; ?>
-                                    </td>
-                                    <td class="td-uid">
-                                        <?php echo  $data['uid'] ; ?>
-                                    </td>
-                                    <!--PageComponentEnd-->
-                                    <td class="td-btn">
-                                        <div class="dropdown" >
-                                            <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
-                                            <i class="material-icons">menu</i> 
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <?php if($can_view){ ?>
-                                                <a class="dropdown-item "   href="<?php print_link("playerachievements/view/$rec_id"); ?>" >
-                                                <i class="material-icons">visibility</i> View
-                                            </a>
-                                            <?php } ?>
+                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports//$data[sportid]?subpage=1") ?>">
+                                        <?php echo $data['sports_sportsname'] ?>
+                                    </a>
+                                </td>
+                                <td class="td-date">
+                                    <?php echo  $data['date'] ; ?>
+                                </td>
+                                <td class="td-medal">
+                                    <?php echo  $data['medal'] ; ?>
+                                </td>
+                                <td class="td-certificate">
+                                    <?php 
+                                        Html :: page_img($data['certificate'], '50px', '50px', "small", 1); 
+                                    ?>
+                                </td>
+                                <!--PageComponentEnd-->
+                                <td class="td-btn">
+                                    <div class="dropdown" >
+                                        <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
+                                        <i class="material-icons">menu</i> 
+                                        </button>
+                                        <ul class="dropdown-menu">
                                             <?php if($can_edit_record){ ?>
                                             <a class="dropdown-item "   href="<?php print_link("playerachievements/edit/$rec_id"); ?>" >
                                             <i class="material-icons">edit</i> Edit

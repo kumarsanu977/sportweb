@@ -43,8 +43,36 @@ class ComponentsData{
      * @return array
      */
 	function playerid_option_list(){
-		$sqltext = "SELECT PlayerID as value, playernamenepali as label FROM player";
+		$sqltext = "SELECT PlayerID as value, playernamenepali as label FROM player WHERE uid=:userid" ;
 		$query_params = [];
+$query_params['userid'] = auth()->user()->uid;
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+
+	
+
+	/**
+     * sportid_option_list Model Action
+     * @return array
+     */
+	function sportid_option_list(){
+		$sqltext = "SELECT  DISTINCT sportsid AS value,sportsname AS label FROM sports";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+
+	
+
+	/**
+     * playersport_playerid_option_list Model Action
+     * @return array
+     */
+	function playersport_playerid_option_list(){
+		$sqltext = "SELECT PlayerID as value, playernamenepali as label FROM player WHERE uid=:userid" ;
+		$query_params = [];
+		$query_params['userid'] = auth()->user()->uid;
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;
 	}

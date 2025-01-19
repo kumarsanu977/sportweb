@@ -150,7 +150,24 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-qualification-holder" class=" ">
-                                                <input id="ctrl-qualification" data-field="qualification"  value="<?php echo get_value('qualification', "NULL") ?>" type="text" placeholder="Enter Qualification"  name="qualification"  class="form-control " />
+                                                <select  id="ctrl-qualification" data-field="qualification" name="qualification"  placeholder="Select a value ..."    class="form-select" >
+                                                <option value="">Select a value ...</option>
+                                                <?php
+                                                    $options = Menu::qualification();
+                                                    if(!empty($options)){
+                                                    foreach($options as $option){
+                                                    $value = $option['value'];
+                                                    $label = $option['label'];
+                                                    $selected = Html::get_field_selected('qualification', $value, "");
+                                                ?>
+                                                <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                <?php echo $label ?>
+                                                </option>                                   
+                                                <?php
+                                                    }
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +179,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-weight-holder" class=" ">
-                                                <input id="ctrl-weight" data-field="weight"  value="<?php echo get_value('weight', "NULL") ?>" type="number" placeholder="Enter Weight" step="0.1"  name="weight"  class="form-control " />
+                                                <input id="ctrl-weight" data-field="weight"  value="<?php echo get_value('weight') ?>" type="number" placeholder="Enter Weight" step="0.1"  name="weight"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +191,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-height-holder" class=" ">
-                                                <input id="ctrl-height" data-field="height"  value="<?php echo get_value('height', "NULL") ?>" type="number" placeholder="Enter Height" step="0.1"  name="height"  class="form-control " />
+                                                <input id="ctrl-height" data-field="height"  value="<?php echo get_value('height') ?>" type="number" placeholder="Enter Height" step="0.1"  name="height"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +203,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-schoolname-holder" class=" ">
-                                                <input id="ctrl-schoolname" data-field="schoolname"  value="<?php echo get_value('schoolname', "NULL") ?>" type="text" placeholder="Enter Schoolname"  name="schoolname"  class="form-control " />
+                                                <input id="ctrl-schoolname" data-field="schoolname"  value="<?php echo get_value('schoolname') ?>" type="text" placeholder="Enter Schoolname"  name="schoolname"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -198,7 +215,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-playercontact-holder" class=" ">
-                                                <input id="ctrl-playercontact" data-field="playercontact"  value="<?php echo get_value('playercontact', "NULL") ?>" type="text" placeholder="Enter Playercontact"  name="playercontact"  class="form-control " />
+                                                <input id="ctrl-playercontact" data-field="playercontact"  value="<?php echo get_value('playercontact') ?>" type="text" placeholder="Enter Playercontact"  name="playercontact"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +227,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-fathersname-holder" class=" ">
-                                                <input id="ctrl-fathersname" data-field="fathersname"  value="<?php echo get_value('fathersname', "NULL") ?>" type="text" placeholder="Enter Fathersname"  name="fathersname"  class="form-control " />
+                                                <input id="ctrl-fathersname" data-field="fathersname"  value="<?php echo get_value('fathersname') ?>" type="text" placeholder="Enter Fathersname"  name="fathersname"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +239,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-mothersname-holder" class=" ">
-                                                <input id="ctrl-mothersname" data-field="mothersname"  value="<?php echo get_value('mothersname', "NULL") ?>" type="text" placeholder="Enter Mothersname"  name="mothersname"  class="form-control " />
+                                                <input id="ctrl-mothersname" data-field="mothersname"  value="<?php echo get_value('mothersname') ?>" type="text" placeholder="Enter Mothersname"  name="mothersname"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +251,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-parentscontact-holder" class=" ">
-                                                <input id="ctrl-parentscontact" data-field="parentscontact"  value="<?php echo get_value('parentscontact', "NULL") ?>" type="text" placeholder="Enter Parentscontact"  name="parentscontact"  class="form-control " />
+                                                <input id="ctrl-parentscontact" data-field="parentscontact"  value="<?php echo get_value('parentscontact') ?>" type="text" placeholder="Enter Parentscontact"  name="parentscontact"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +263,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-coachname-holder" class=" ">
-                                                <input id="ctrl-coachname" data-field="coachname"  value="<?php echo get_value('coachname', "NULL") ?>" type="text" placeholder="Enter Coachname"  name="coachname"  class="form-control " />
+                                                <input id="ctrl-coachname" data-field="coachname"  value="<?php echo get_value('coachname') ?>" type="text" placeholder="Enter Coachname"  name="coachname"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +275,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-coachcontact-holder" class=" ">
-                                                <input id="ctrl-coachcontact" data-field="coachcontact"  value="<?php echo get_value('coachcontact', "NULL") ?>" type="text" placeholder="Enter Coachcontact"  name="coachcontact"  class="form-control " />
+                                                <input id="ctrl-coachcontact" data-field="coachcontact"  value="<?php echo get_value('coachcontact') ?>" type="text" placeholder="Enter Coachcontact"  name="coachcontact"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -266,12 +283,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="signature">Signature </label>
+                                            <label class="control-label" for="signature">Signature <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-signature-holder" class=" ">
-                                                <div class="dropzone " input="#ctrl-signature" fieldname="signature" uploadurl="{{ url('fileuploader/upload/signature') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                    <input name="signature" id="ctrl-signature" data-field="signature" class="dropzone-input form-control" value="<?php echo get_value('signature') ?>" type="text"  />
+                                                <div class="dropzone required" input="#ctrl-signature" fieldname="signature" uploadurl="{{ url('fileuploader/upload/signature') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                    <input name="signature" id="ctrl-signature" data-field="signature" required="" class="dropzone-input form-control" value="<?php echo get_value('signature') ?>" type="text"  />
                                                     <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
                                                     <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
                                                 </div>
@@ -282,27 +299,15 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="photo">Photo </label>
+                                            <label class="control-label" for="photo">Photo <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-photo-holder" class=" ">
-                                                <div class="dropzone " input="#ctrl-photo" fieldname="photo" uploadurl="{{ url('fileuploader/upload/photo') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                    <input name="photo" id="ctrl-photo" data-field="photo" class="dropzone-input form-control" value="<?php echo get_value('photo') ?>" type="text"  />
+                                                <div class="dropzone required" input="#ctrl-photo" fieldname="photo" uploadurl="{{ url('fileuploader/upload/photo') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                    <input name="photo" id="ctrl-photo" data-field="photo" required="" class="dropzone-input form-control" value="<?php echo get_value('photo') ?>" type="text"  />
                                                     <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
                                                     <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="isapproved">Isapproved </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-isapproved-holder" class=" ">
-                                                <input id="ctrl-isapproved" data-field="isapproved"  value="<?php echo get_value('isapproved', "0") ?>" type="number" placeholder="Enter Isapproved" step="any"  name="isapproved"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>

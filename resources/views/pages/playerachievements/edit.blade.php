@@ -76,7 +76,22 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-sportid-holder" class=" ">
-                                            <input id="ctrl-sportid" data-field="sportid"  value="<?php  echo $data['sportid']; ?>" type="number" placeholder="Enter Sportid" step="any"  required="" name="sportid"  class="form-control " />
+                                            <select required=""  id="ctrl-sportid" data-field="sportid" name="sportid"  placeholder="Select a value ..."    class="form-select" >
+                                            <option value="">Select a value ...</option>
+                                            <?php
+                                                $options = $comp_model->sportid_option_list() ?? [];
+                                                foreach($options as $option){
+                                                $value = $option->value;
+                                                $label = $option->label ?? $value;
+                                                $selected = ( $value == $data['sportid'] ? 'selected' : null );
+                                            ?>
+                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                            <?php echo $label; ?>
+                                            </option>
+                                            <?php
+                                                }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -113,8 +128,13 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-certificate-holder" class=" ">
-                                            <input id="ctrl-certificate" data-field="certificate"  value="<?php  echo $data['certificate']; ?>" type="text" placeholder="Enter Certificate"  name="certificate"  class="form-control " />
+                                            <div class="dropzone " input="#ctrl-certificate" fieldname="certificate" uploadurl="{{ url('fileuploader/upload/certificate') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                <input name="certificate" id="ctrl-certificate" data-field="certificate" class="dropzone-input form-control" value="<?php  echo $data['certificate']; ?>" type="text"  />
+                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
+                                                <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
+                                            </div>
                                         </div>
+                                        <?php Html :: uploaded_files_list($data['certificate'], '#ctrl-certificate'); ?>
                                     </div>
                                 </div>
                             </div>

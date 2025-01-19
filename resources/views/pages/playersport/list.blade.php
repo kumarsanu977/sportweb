@@ -68,7 +68,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <span class="fw-bold">Loading...</span>
                                 </div>
                             </div>
-                            <?php Html::page_bread_crumb("/playersport/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
                                 <?php Html::filter_tag('search', __('Search')); ?>
@@ -83,12 +82,10 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-playersportid" > Playersportid</th>
                                         <th class="td-playerid" > Playerid</th>
                                         <th class="td-sportsid" > Sportsid</th>
                                         <th class="td-date" > Date</th>
                                         <th class="td-location" > Location</th>
-                                        <th class="td-uid" > Uid</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -119,17 +116,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <?php } ?>
                                         <!--PageComponentStart-->
-                                        <td class="td-playersportid">
-                                            <a href="<?php print_link("/playersport/view/$data[playersportid]") ?>"><?php echo $data['playersportid']; ?></a>
-                                        </td>
                                         <td class="td-playerid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("player/view/$data[playerid]?subpage=1") ?>">
-                                            <i class="material-icons">visibility</i> <?php echo "Player" ?>
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player/view/$data[playerid]?subpage=1") ?>">
+                                            <?php echo $data['player_playernamenepali'] ?>
                                         </a>
                                     </td>
                                     <td class="td-sportsid">
-                                        <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
-                                        <i class="material-icons">visibility</i> <?php echo "Sports" ?>
+                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
+                                        <?php echo $data['sports_sportsname'] ?>
                                     </a>
                                 </td>
                                 <td class="td-date">
@@ -138,9 +132,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <td class="td-location">
                                     <?php echo  $data['location'] ; ?>
                                 </td>
-                                <td class="td-uid">
-                                    <?php echo  $data['uid'] ; ?>
-                                </td>
                                 <!--PageComponentEnd-->
                                 <td class="td-btn">
                                     <div class="dropdown" >
@@ -148,80 +139,75 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <i class="material-icons">menu</i> 
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <?php if($can_view){ ?>
-                                            <a class="dropdown-item "   href="<?php print_link("playersport/view/$rec_id"); ?>" >
-                                            <i class="material-icons">visibility</i> View
+                                            <?php if($can_edit_record){ ?>
+                                            <a class="dropdown-item "   href="<?php print_link("playersport/edit/$rec_id"); ?>" >
+                                            <i class="material-icons">edit</i> Edit
                                         </a>
                                         <?php } ?>
-                                        <?php if($can_edit_record){ ?>
-                                        <a class="dropdown-item "   href="<?php print_link("playersport/edit/$rec_id"); ?>" >
-                                        <i class="material-icons">edit</i> Edit
+                                        <?php if($can_delete_record){ ?>
+                                        <a class="dropdown-item record-delete-btn" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal" href="<?php print_link("playersport/delete/$rec_id"); ?>" >
+                                        <i class="material-icons">delete_sweep</i> Delete
                                     </a>
                                     <?php } ?>
-                                    <?php if($can_delete_record){ ?>
-                                    <a class="dropdown-item record-delete-btn" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal" href="<?php print_link("playersport/delete/$rec_id"); ?>" >
-                                    <i class="material-icons">delete_sweep</i> Delete
-                                </a>
-                                <?php } ?>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <?php 
-                    }
-                ?>
-                <!--endrecord-->
-            </tbody>
-            <tbody class="search-data"></tbody>
-            <?php
-                }
-                else{
-            ?>
-            <tbody class="page-data">
-                <tr>
-                    <td class="bg-light text-center text-muted animated bounce p-3" colspan="1000">
-                        <i class="material-icons">block</i> No record found
-                    </td>
-                </tr>
-            </tbody>
-            <?php
-                }
-            ?>
-        </table>
-    </div>
-    <?php
-        if($show_footer){
-    ?>
-    <div class=" mt-3">
-        <div class="row align-items-center justify-content-between">    
-            <div class="col-md-auto d-flex">    
-                <?php if($can_delete){ ?>
-                <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("playersport/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
-                <i class="material-icons">delete_sweep</i> Delete Selected
-                </button>
-                <?php } ?>
-            </div>
-            <div class="col">   
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php 
+                        }
+                    ?>
+                    <!--endrecord-->
+                </tbody>
+                <tbody class="search-data"></tbody>
                 <?php
-                    if($show_pagination == true){
-                    $pager = new Pagination($total_records, $record_count);
-                    $pager->show_page_count = false;
-                    $pager->show_record_count = true;
-                    $pager->show_page_limit =false;
-                    $pager->limit = $limit;
-                    $pager->show_page_number_list = true;
-                    $pager->pager_link_range=5;
-                    $pager->ajax_page = true;
-                    $pager->render();
+                    }
+                    else{
+                ?>
+                <tbody class="page-data">
+                    <tr>
+                        <td class="bg-light text-center text-muted animated bounce p-3" colspan="1000">
+                            <i class="material-icons">block</i> No record found
+                        </td>
+                    </tr>
+                </tbody>
+                <?php
                     }
                 ?>
+            </table>
+        </div>
+        <?php
+            if($show_footer){
+        ?>
+        <div class=" mt-3">
+            <div class="row align-items-center justify-content-between">    
+                <div class="col-md-auto d-flex">    
+                    <?php if($can_delete){ ?>
+                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("playersport/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                    <i class="material-icons">delete_sweep</i> Delete Selected
+                    </button>
+                    <?php } ?>
+                </div>
+                <div class="col">   
+                    <?php
+                        if($show_pagination == true){
+                        $pager = new Pagination($total_records, $record_count);
+                        $pager->show_page_count = false;
+                        $pager->show_record_count = true;
+                        $pager->show_page_limit =false;
+                        $pager->limit = $limit;
+                        $pager->show_page_number_list = true;
+                        $pager->pager_link_range=5;
+                        $pager->ajax_page = true;
+                        $pager->render();
+                        }
+                    ?>
+                </div>
             </div>
         </div>
+        <?php
+            }
+        ?>
     </div>
-    <?php
-        }
-    ?>
-</div>
 </div>
 </div>
 </div>

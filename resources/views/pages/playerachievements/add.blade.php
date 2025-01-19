@@ -75,7 +75,22 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-sportid-holder" class=" ">
-                                                <input id="ctrl-sportid" data-field="sportid"  value="<?php echo get_value('sportid') ?>" type="number" placeholder="Enter Sportid" step="any"  required="" name="sportid"  class="form-control " />
+                                                <select required=""  id="ctrl-sportid" data-field="sportid" name="sportid"  placeholder="Select a value ..."    class="form-select" >
+                                                <option value="">Select a value ...</option>
+                                                <?php 
+                                                    $options = $comp_model->sportid_option_list() ?? [];
+                                                    foreach($options as $option){
+                                                    $value = $option->value;
+                                                    $label = $option->label ?? $value;
+                                                    $selected = Html::get_field_selected('sportid', $value, "");
+                                                ?>
+                                                <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                                <?php echo $label; ?>
+                                                </option>
+                                                <?php
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +115,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-medal-holder" class=" ">
-                                                <input id="ctrl-medal" data-field="medal"  value="<?php echo get_value('medal', "NULL") ?>" type="text" placeholder="Enter Medal"  name="medal"  class="form-control " />
+                                                <input id="ctrl-medal" data-field="medal"  value="<?php echo get_value('medal') ?>" type="text" placeholder="Enter Medal"  name="medal"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +127,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-certificate-holder" class=" ">
-                                                <input id="ctrl-certificate" data-field="certificate"  value="<?php echo get_value('certificate', "NULL") ?>" type="text" placeholder="Enter Certificate"  name="certificate"  class="form-control " />
+                                                <div class="dropzone " input="#ctrl-certificate" fieldname="certificate" uploadurl="{{ url('fileuploader/upload/certificate') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                    <input name="certificate" id="ctrl-certificate" data-field="certificate" class="dropzone-input form-control" value="<?php echo get_value('certificate') ?>" type="text"  />
+                                                    <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
+                                                    <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

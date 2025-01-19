@@ -32,7 +32,7 @@ class PlayerAddRequest extends FormRequest
 				"temporaryaddress" => "nullable",
 				"dob" => "required|date",
 				"citizenshipno" => "required|string",
-				"qualification" => "nullable|string",
+				"qualification" => "nullable",
 				"weight" => "nullable|numeric",
 				"height" => "nullable|numeric",
 				"schoolname" => "nullable|string",
@@ -42,9 +42,8 @@ class PlayerAddRequest extends FormRequest
 				"parentscontact" => "nullable|string",
 				"coachname" => "nullable|string",
 				"coachcontact" => "nullable|string",
-				"signature" => "nullable",
-				"photo" => "nullable",
-				"isapproved" => "nullable|numeric",
+				"signature" => "required",
+				"photo" => "required",
             
         ];
     }

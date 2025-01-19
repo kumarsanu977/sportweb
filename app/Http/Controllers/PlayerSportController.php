@@ -27,6 +27,8 @@ class PlayerSportController extends Controller
 			$search = trim($request->search);
 			PlayerSport::search($query, $search); // search table records
 		}
+		$query->join("player", "player_sport.playerid", "=", "player.PlayerID");
+		$query->join("sports", "player_sport.sportsid", "=", "sports.SportsID");
 		$orderby = $request->orderby ?? "player_sport.playersportid";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
@@ -40,23 +42,6 @@ class PlayerSportController extends Controller
 		}
 		$records = $query->paginate($limit, PlayerSport::listFields());
 		return $this->renderView($view, compact("records"));
-	}
-	
-
-	/**
-     * Select table record by ID
-	 * @param string $rec_id
-     * @return \Illuminate\View\View
-     */
-	function view($rec_id = null){
-		$query = PlayerSport::query();
-		$allowedRoles = auth()->user()->hasRole(["admin"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("player_sport.uid", auth()->user()->uid);
-		}
-		$record = $query->findOrFail($rec_id, PlayerSport::viewFields());
-		return $this->renderView("pages.playersport.view", ["data" => $record]);
 	}
 	
 

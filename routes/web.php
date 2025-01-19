@@ -84,7 +84,6 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 /* routes for PlayerAchievements Controller */
 	Route::get('playerachievements', 'PlayerAchievementsController@index')->name('playerachievements.index');
 	Route::get('playerachievements/index/{filter?}/{filtervalue?}', 'PlayerAchievementsController@index')->name('playerachievements.index');	
-	Route::get('playerachievements/view/{rec_id}', 'PlayerAchievementsController@view')->name('playerachievements.view');	
 	Route::get('playerachievements/add', 'PlayerAchievementsController@add')->name('playerachievements.add');
 	Route::post('playerachievements/add', 'PlayerAchievementsController@store')->name('playerachievements.store');
 		
@@ -94,7 +93,6 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 /* routes for PlayerSport Controller */
 	Route::get('playersport', 'PlayerSportController@index')->name('playersport.index');
 	Route::get('playersport/index/{filter?}/{filtervalue?}', 'PlayerSportController@index')->name('playersport.index');	
-	Route::get('playersport/view/{rec_id}', 'PlayerSportController@view')->name('playersport.view');	
 	Route::get('playersport/add', 'PlayerSportController@add')->name('playersport.add');
 	Route::post('playersport/add', 'PlayerSportController@store')->name('playersport.store');
 		
@@ -115,8 +113,6 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 /* routes for Sports Controller */
 	Route::get('sports', 'SportsController@index')->name('sports.index');
 	Route::get('sports/index/{filter?}/{filtervalue?}', 'SportsController@index')->name('sports.index');	
-	Route::get('sports/view/{rec_id}', 'SportsController@view')->name('sports.view');
-	Route::get('sports/masterdetail/{rec_id}', 'SportsController@masterDetail')->name('sports.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('sports/add', 'SportsController@add')->name('sports.add');
 	Route::post('sports/add', 'SportsController@store')->name('sports.store');
 		
@@ -154,6 +150,18 @@ Route::get('componentsdata/sportsid_option_list',  function(Request $request){
 Route::get('componentsdata/playerid_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->playerid_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/sportid_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->sportid_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/playersport_playerid_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->playersport_playerid_option_list($request);
 	}
 )->middleware(['auth']);
 	

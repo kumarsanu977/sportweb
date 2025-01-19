@@ -18,6 +18,8 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                         <div class="h5 font-weight-bold">Home</div>
                     </div>
                 </div>
+                <div class="col-12 comp-grid " >
+                </div>
             </div>
         </div>
     </div>

@@ -151,7 +151,25 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-qualification-holder" class=" ">
-                                            <input id="ctrl-qualification" data-field="qualification"  value="<?php  echo $data['qualification']; ?>" type="text" placeholder="Enter Qualification"  name="qualification"  class="form-control " />
+                                            <select  id="ctrl-qualification" data-field="qualification" name="qualification"  placeholder="Select a value ..."    class="form-select" >
+                                            <option value="">Select a value ...</option>
+                                            <?php
+                                                $options = Menu::qualification();
+                                                $field_value = $data['qualification'];
+                                                if(!empty($options)){
+                                                foreach($options as $option){
+                                                $value = $option['value'];
+                                                $label = $option['label'];
+                                                $selected = Html::get_record_selected($field_value, $value);
+                                            ?>
+                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                            <?php echo $label ?>
+                                            </option>                                   
+                                            <?php
+                                                }
+                                                }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -267,12 +285,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="signature">Signature </label>
+                                        <label class="control-label" for="signature">Signature <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-signature-holder" class=" ">
-                                            <div class="dropzone " input="#ctrl-signature" fieldname="signature" uploadurl="{{ url('fileuploader/upload/signature') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                <input name="signature" id="ctrl-signature" data-field="signature" class="dropzone-input form-control" value="<?php  echo $data['signature']; ?>" type="text"  />
+                                            <div class="dropzone required" input="#ctrl-signature" fieldname="signature" uploadurl="{{ url('fileuploader/upload/signature') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                <input name="signature" id="ctrl-signature" data-field="signature" required="" class="dropzone-input form-control" value="<?php  echo $data['signature']; ?>" type="text"  />
                                                 <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
                                                 <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
                                             </div>
@@ -284,12 +302,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="photo">Photo </label>
+                                        <label class="control-label" for="photo">Photo <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-photo-holder" class=" ">
-                                            <div class="dropzone " input="#ctrl-photo" fieldname="photo" uploadurl="{{ url('fileuploader/upload/photo') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                <input name="photo" id="ctrl-photo" data-field="photo" class="dropzone-input form-control" value="<?php  echo $data['photo']; ?>" type="text"  />
+                                            <div class="dropzone required" input="#ctrl-photo" fieldname="photo" uploadurl="{{ url('fileuploader/upload/photo') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                <input name="photo" id="ctrl-photo" data-field="photo" required="" class="dropzone-input form-control" value="<?php  echo $data['photo']; ?>" type="text"  />
                                                 <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
                                                 <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
                                             </div>
@@ -305,7 +323,25 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-isapproved-holder" class=" ">
-                                            <input id="ctrl-isapproved" data-field="isapproved"  value="<?php  echo $data['isapproved']; ?>" type="number" placeholder="Enter Isapproved" step="any"  name="isapproved"  class="form-control " />
+                                            <select  id="ctrl-isapproved" data-field="isapproved" name="isapproved"  placeholder="Select a value ..."    class="form-select" >
+                                            <option value="">Select a value ...</option>
+                                            <?php
+                                                $options = Menu::isapproved();
+                                                $field_value = $data['isapproved'];
+                                                if(!empty($options)){
+                                                foreach($options as $option){
+                                                $value = $option['value'];
+                                                $label = $option['label'];
+                                                $selected = Html::get_record_selected($field_value, $value);
+                                            ?>
+                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                            <?php echo $label ?>
+                                            </option>                                   
+                                            <?php
+                                                }
+                                                }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

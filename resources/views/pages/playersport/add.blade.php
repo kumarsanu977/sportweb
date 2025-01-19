@@ -51,7 +51,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <select required=""  id="ctrl-playerid" data-field="playerid" name="playerid"  placeholder="Select a value ..."    class="form-select" >
                                                 <option value="">Select a value ...</option>
                                                 <?php 
-                                                    $options = $comp_model->playerid_option_list() ?? [];
+                                                    $options = $comp_model->playersport_playerid_option_list() ?? [];
                                                     foreach($options as $option){
                                                     $value = $option->value;
                                                     $label = $option->label ?? $value;
@@ -115,7 +115,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-location-holder" class=" ">
-                                                <input id="ctrl-location" data-field="location"  value="<?php echo get_value('location', "NULL") ?>" type="text" placeholder="Enter Location"  name="location"  class="form-control " />
+                                                <input id="ctrl-location" data-field="location"  value="<?php echo get_value('location') ?>" type="text" placeholder="Enter Location"  name="location"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>

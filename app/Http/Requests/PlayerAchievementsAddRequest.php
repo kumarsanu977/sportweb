@@ -26,10 +26,10 @@ class PlayerAchievementsAddRequest extends FormRequest
         return [
             
 				"playerid" => "required",
-				"sportid" => "required|numeric",
+				"sportid" => "required",
 				"date" => "required|date",
 				"medal" => "nullable|string",
-				"certificate" => "nullable|string",
+				"certificate" => "nullable",
             
         ];
     }

@@ -85,30 +85,12 @@ class Sports extends Model
 	
 
 	/**
-     * return view page fields of the model.
-     * 
-     * @return array
-     */
-	public static function viewFields(){
-		return [ 
-			"SportsID AS sportsid",
-
-			"SportsName AS sportsname" 
-		];
-	}
-
-	
-
-	/**
      * return exportView page fields of the model.
      * 
      * @return array
      */
 	public static function exportViewFields(){
 		return [ 
-			"SportsID AS sportsid",
-
-			"SportsName AS sportsname" 
 		];
 	}
 

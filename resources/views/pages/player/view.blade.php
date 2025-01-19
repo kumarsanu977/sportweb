@@ -22,14 +22,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto  back-btn-col" >
-                    <a class="back-btn btn " href="{{ url()->previous() }}" >
-                        <i class="material-icons">arrow_back</i>                                
-                    </a>
-                </div>
-                <div class="col  " >
-                    <div class="">
-                        <div class="h5 font-weight-bold text-primary">Player Details</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -285,7 +277,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <div class="col">
                                                 <small class="text-muted">Signature</small>
                                                 <div class="fw-bold">
-                                                    <?php echo  $data['signature'] ; ?>
+                                                    <?php 
+                                                        Html :: page_img($data['signature'], 'auto', 'auto', "", 1); 
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -305,42 +299,25 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">Isapproved</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['isapproved'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">Uid</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['uid'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">Date Created</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['date_created'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                    switch ($data['isapproved']) {
+                                    case 0:
+                                    echo 'Not Checked';
+                                    break;
+                                    case 1:
+                                    echo 'Approved';
+                                    break;
+                                    case 2:
+                                    echo 'Pending';
+                                    break;
+                                    case 3:
+                                    echo 'Not Approved';
+                                    break;
+                                    default:
+                                    echo 'Invalid Status';
+                                    break;
+                                    }
+                                ?>
                                 <div class="col-12">
                                     <div class="bg-light mb-1 card-1 p-2 border rounded">
                                         <div class="row align-items-center">
@@ -384,6 +361,54 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     </div>
 </div>
 </div>
+</div>
+<div  class="mb-3" >
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col comp-grid " >
+                <div class=" ">
+                    <?php
+                        $params = ['show_header' => false, 'show_footer' => false, 'show_pagination' => false, 'limit' => 10]; //new query param
+                        $query = array_merge(request()->query(), $params);
+                        $queryParams = http_build_query($query);
+                        $url = url("playersport/index/player_sport.PlayerSportID/$data[playerid]?$queryParams");
+                    ?>
+                    <div class="ajax-inline-page" data-url="{{ $url }}" >
+                        <div class="ajax-page-load-indicator">
+                            <div class="text-center d-flex justify-content-center load-indicator">
+                                <span class="loader mr-3"></span>
+                                <span class="fw-bold">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div  class="mb-3" >
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col comp-grid " >
+                <div class=" ">
+                    <?php
+                        $params = ['show_header' => false, 'show_footer' => false, 'show_pagination' => false, 'limit' => 10]; //new query param
+                        $query = array_merge(request()->query(), $params);
+                        $queryParams = http_build_query($query);
+                        $url = url("playerachievements/index/player_achievements.PlayerID/$data[playerid]?$queryParams");
+                    ?>
+                    <div class="ajax-inline-page" data-url="{{ $url }}" >
+                        <div class="ajax-page-load-indicator">
+                            <div class="text-center d-flex justify-content-center load-indicator">
+                                <span class="loader mr-3"></span>
+                                <span class="fw-bold">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
