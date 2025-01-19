@@ -13,7 +13,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     <?php
         if( $show_header == true ){
     ?>
-    <div  class="bg-light p-3 mb-3" > 
+    <div  class="bg-light p-3 mb-3" >
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto  back-btn-col" >
@@ -23,7 +23,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 </div>
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">नया दर्ता</div>
+                        <div class="h5 font-weight-bold text-primary">Add New Player</div>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="sportsid">खेलको नाम: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="sportsid">Sportsid <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-sportsid-holder" class=" ">
@@ -71,7 +71,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="playernamenepali">खेलाडीको नाम <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="playernamenepali">Playernamenepali <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-playernamenepali-holder" class=" ">
@@ -83,7 +83,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="playernameenglish">खेलाडीको नाम (English) <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="playernameenglish">Playernameenglish <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-playernameenglish-holder" class=" ">
@@ -95,7 +95,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="permanentaddress">स्थायी ठेगाना: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="permanentaddress">Permanentaddress <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-permanentaddress-holder" class=" ">
@@ -108,7 +108,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="temporaryaddress">अस्थायी ठेगाना: </label>
+                                            <label class="control-label" for="temporaryaddress">Temporaryaddress </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-temporaryaddress-holder" class=" ">
@@ -121,7 +121,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="dob">जन्म मिति: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="dob">Dob <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-dob-holder" class="input-group ">
@@ -134,7 +134,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="citizenshipno">नागरिकता नं: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="citizenshipno">Citizenshipno <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-citizenshipno-holder" class=" ">
@@ -146,7 +146,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="qualification">शैक्षिक योग्यता: </label>
+                                            <label class="control-label" for="qualification">Qualification </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-qualification-holder" class=" ">
@@ -175,11 +175,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="weight">तौल: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="weight">Weight </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-weight-holder" class=" ">
-                                                <input id="ctrl-weight" data-field="weight"  value="<?php echo get_value('weight') ?>" type="number" placeholder="Enter Weight" step="0.1"  required="" name="weight"  class="form-control " />
+                                                <input id="ctrl-weight" data-field="weight"  value="<?php echo get_value('weight') ?>" type="number" placeholder="Enter Weight" step="0.1"  name="weight"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -187,11 +187,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="height">उचाइ: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="height">Height </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-height-holder" class=" ">
-                                                <input id="ctrl-height" data-field="height"  value="<?php echo get_value('height') ?>" type="number" placeholder="Enter Height" step="0.1"  required="" name="height"  class="form-control " />
+                                                <input id="ctrl-height" data-field="height"  value="<?php echo get_value('height') ?>" type="number" placeholder="Enter Height" step="0.1"  name="height"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="schoolname">स्कूल/कलेजको नाम </label>
+                                            <label class="control-label" for="schoolname">Schoolname </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-schoolname-holder" class=" ">
@@ -211,11 +211,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="playercontact">खेलाडीको सम्पर्क नं: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="playercontact">Playercontact </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-playercontact-holder" class=" ">
-                                                <input id="ctrl-playercontact" data-field="playercontact"  value="<?php echo get_value('playercontact') ?>" type="text" placeholder="Enter Playercontact"  required="" name="playercontact"  class="form-control " />
+                                                <input id="ctrl-playercontact" data-field="playercontact"  value="<?php echo get_value('playercontact') ?>" type="text" placeholder="Enter Playercontact"  name="playercontact"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -223,11 +223,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="fathersname">पिताको नाम थर: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="fathersname">Fathersname </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-fathersname-holder" class=" ">
-                                                <input id="ctrl-fathersname" data-field="fathersname"  value="<?php echo get_value('fathersname') ?>" type="text" placeholder="Enter Fathersname"  required="" name="fathersname"  class="form-control " />
+                                                <input id="ctrl-fathersname" data-field="fathersname"  value="<?php echo get_value('fathersname') ?>" type="text" placeholder="Enter Fathersname"  name="fathersname"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +235,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="mothersname">माताको नाम थर: </label>
+                                            <label class="control-label" for="mothersname">Mothersname </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-mothersname-holder" class=" ">
@@ -247,7 +247,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="parentscontact">पिता/माताको सम्पर्क नं: </label>
+                                            <label class="control-label" for="parentscontact">Parentscontact </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-parentscontact-holder" class=" ">
@@ -259,7 +259,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="coachname">प्रशिक्षकको नाम: </label>
+                                            <label class="control-label" for="coachname">Coachname </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-coachname-holder" class=" ">
@@ -271,7 +271,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="coachcontact">प्रशिक्षकको सम्पर्क नं: </label>
+                                            <label class="control-label" for="coachcontact">Coachcontact </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-coachcontact-holder" class=" ">
@@ -283,7 +283,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="signature">हस्ताक्षार <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="signature">Signature <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-signature-holder" class=" ">
@@ -299,7 +299,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="photo">फोटो <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="photo">Photo <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-photo-holder" class=" ">

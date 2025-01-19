@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/custom-style.css') }}" />
-
+		<link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
 		<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 
 		@yield('pagecss')

@@ -35,11 +35,19 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     <?php if($can_add){ ?>
                     <a  class="btn btn-primary btn-block" href="<?php print_link("playerachievements/add", true) ?>" >
                     <i class="material-icons">add</i>                               
-                    उपलब्धिहरु थप्नुहोस 
+                    Add New Player Achievement 
                 </a>
                 <?php } ?>
             </div>
             <div class="col-md-3  " >
+                <!-- Page drop down search component -->
+                <form  class="search" action="{{ url()->current() }}" method="get">
+                    <input type="hidden" name="page" value="1" />
+                    <div class="input-group">
+                        <input value="<?php echo get_value('search'); ?>" class="form-control page-search" type="text" name="search"  placeholder="Search" />
+                        <button class="btn btn-primary"><i class="material-icons">search</i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -74,11 +82,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-playerid" > खेलाडीको ना</th>
-                                        <th class="td-sportid" > खेलको नाम</th>
-                                        <th class="td-date" > मिति</th>
-                                        <th class="td-medal" > पदक</th>
-                                        <th class="td-certificate" > सर्टिफिकेट</th>
+                                        <th class="td-playerid" > Playerid</th>
+                                        <th class="td-sportid" > Sportid</th>
+                                        <th class="td-date" > Date</th>
+                                        <th class="td-medal" > Medal</th>
+                                        <th class="td-certificate" > Certificate</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -126,7 +134,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <?php echo  $data['medal'] ; ?>
                                 </td>
                                 <td class="td-certificate">
-                                <?php 
+                                    <?php 
                                         Html :: page_img($data['certificate'], '50px', '50px', "small", 1); 
                                     ?>
                                 </td>

@@ -6,37 +6,37 @@
 		return [
 		[
 			'path' => 'player',
-			'label' => "Player", 
+			'label' => "खेलाडीहरु", 
 			'icon' => '<i class="material-icons ">directions_run</i>'
 		],
 		
 		[
 			'path' => 'playersport',
-			'label' => "Played Sports", 
+			'label' => "प्रतियोगिताहरु", 
 			'icon' => '<i class="material-icons ">videogame_asset</i>'
 		],
 		
 		[
 			'path' => 'playerachievements',
-			'label' => "Achievments", 
+			'label' => "उपलब्धिहरु", 
 			'icon' => '<i class="material-icons ">filter_none</i>'
 		],
 		
 		[
 			'path' => 'sports',
-			'label' => "Sports", 
+			'label' => "खेलहरु", 
 			'icon' => '<i class="material-icons ">games</i>'
 		],
 		
 		[
 			'path' => 'users',
-			'label' => "Users", 
+			'label' => "प्रयोगकर्ताहरु", 
 			'icon' => '<i class="material-icons ">group</i>'
 		],
 		
 		[
 			'path' => 'audits',
-			'label' => "Logs", 
+			'label' => "लगहरु", 
 			'icon' => '<i class="material-icons ">folder_shared</i>'
 		]
 	] ;
@@ -46,24 +46,24 @@
 	public static function qualification(){
 		return [
 		[
-			'value' => 'Master', 
-			'label' => "Master", 
+			'value' => 'स्नातकोत्तर', 
+			'label' => "स्नातकोत्तर", 
 		],
 		[
-			'value' => 'Bachelor', 
-			'label' => "Bachelor", 
+			'value' => 'स्नातक', 
+			'label' => "स्नातक", 
 		],
 		[
-			'value' => 'Intermediate', 
-			'label' => "Intermediate", 
+			'value' => 'उच्च शिक्षा', 
+			'label' => "उच्च शिक्षा", 
 		],
 		[
-			'value' => 'SLC', 
-			'label' => "Slc", 
+			'value' => 'माध्यमिक तह', 
+			'label' => "माध्यमिक तह", 
 		],
 		[
-			'value' => 'General Education', 
-			'label' => "General Education", 
+			'value' => 'साधारण लेखपढ', 
+			'label' => "साधारण लेखपढ", 
 		],] ;
 	}
 	
@@ -71,19 +71,19 @@
 		return [
 		[
 			'value' => '0', 
-			'label' => "Not Checked", 
+			'label' => "नहेरिएको", 
 		],
 		[
 			'value' => '1', 
-			'label' => "Approved", 
+			'label' => "स्वीकृत", 
 		],
 		[
 			'value' => '2', 
-			'label' => "Pending", 
+			'label' => "विचाराधीन", 
 		],
 		[
 			'value' => '3', 
-			'label' => "Not Approved", 
+			'label' => "अस्वीकृत", 
 		],] ;
 	}
 	

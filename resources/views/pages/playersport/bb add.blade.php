@@ -4,7 +4,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = "Add New Player Achievement"; //set dynamic page title
+    $pageTitle = "Add New Player Sport"; //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -23,7 +23,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 </div>
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">उपलब्धिहरु थप्नुहोस</div>
+                        <div class="h5 font-weight-bold text-primary">Add New Player Sport</div>
                     </div>
                 </div>
             </div>
@@ -38,20 +38,20 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div class="col-md-9 comp-grid " >
                     <div  class="card card-1 border rounded page-content" >
                         <!--[form-start]-->
-                        <form id="playerachievements-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="{{ route('playerachievements.store') }}" method="post">
+                        <form id="playersport-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="{{ route('playersport.store') }}" method="post">
                             @csrf
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="playerid">खेलाडीको नाम छान्नुहोस: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="playerid">Playerid <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-playerid-holder" class=" ">
                                                 <select required=""  id="ctrl-playerid" data-field="playerid" name="playerid"  placeholder="Select a value ..."    class="form-select" >
                                                 <option value="">Select a value ...</option>
                                                 <?php 
-                                                    $options = $comp_model->playerid_option_list() ?? [];
+                                                    $options = $comp_model->playersport_playerid_option_list() ?? [];
                                                     foreach($options as $option){
                                                     $value = $option->value;
                                                     $label = $option->label ?? $value;
@@ -71,18 +71,18 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="sportid">खेलको नाम छान्नुहोस: <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="sportsid">Sportsid <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <div id="ctrl-sportid-holder" class=" ">
-                                                <select required=""  id="ctrl-sportid" data-field="sportid" name="sportid"  placeholder="Select a value ..."    class="form-select" >
+                                            <div id="ctrl-sportsid-holder" class=" ">
+                                                <select required=""  id="ctrl-sportsid" data-field="sportsid" name="sportsid"  placeholder="Select a value ..."    class="form-select" >
                                                 <option value="">Select a value ...</option>
                                                 <?php 
-                                                    $options = $comp_model->sportid_option_list() ?? [];
+                                                    $options = $comp_model->sportsid_option_list() ?? [];
                                                     foreach($options as $option){
                                                     $value = $option->value;
                                                     $label = $option->label ?? $value;
-                                                    $selected = Html::get_field_selected('sportid', $value, "");
+                                                    $selected = Html::get_field_selected('sportsid', $value, "");
                                                 ?>
                                                 <option <?php echo $selected; ?> value="<?php echo $value; ?>">
                                                 <?php echo $label; ?>
@@ -98,7 +98,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="date">मिति <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div id="ctrl-date-holder" class="input-group ">
@@ -111,27 +111,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="medal">पदक </label>
+                                            <label class="control-label" for="location">Location </label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <div id="ctrl-medal-holder" class=" ">
-                                                <input id="ctrl-medal" data-field="medal"  value="<?php echo get_value('medal') ?>" type="text" placeholder="Enter Medal"  name="medal"  class="form-control " />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="certificate">सर्टिफिकेट </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-certificate-holder" class=" ">
-                                                <div class="dropzone " input="#ctrl-certificate" fieldname="certificate" uploadurl="{{ url('fileuploader/upload/certificate') }}"    data-multiple="false" dropmsg="Choose files or drop files here"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                    <input name="certificate" id="ctrl-certificate" data-field="certificate" class="dropzone-input form-control" value="<?php echo get_value('certificate') ?>" type="text"  />
-                                                    <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
-                                                    <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
-                                                </div>
+                                            <div id="ctrl-location-holder" class=" ">
+                                                <input id="ctrl-location" data-field="location"  value="<?php echo get_value('location') ?>" type="text" placeholder="Enter Location"  name="location"  class="form-control " />
                                             </div>
                                         </div>
                                     </div>

@@ -23,31 +23,23 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     <?php
         if( $show_header == true ){
     ?>
-    <div  class="bg-light p-3 mb-3" >
+    <div  class="bg-light p-3 mb-3" > 
         <div class="container-fluid">
             <div class="row justify-content-between align-items-center gap-3">
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">Player Sport</div>
+                        <div class="h5 font-weight-bold text-primary">हाल सम्म सहभागी प्रतियोगिताहरु</div>
                     </div>
                 </div>
                 <div class="col-auto  " >
                     <?php if($can_add){ ?>
                     <a  class="btn btn-primary btn-block" href="<?php print_link("playersport/add", true) ?>" >
                     <i class="material-icons">add</i>                               
-                    Add New Player Sport 
+                    प्रतियोगिताहरु थप्नुहोस 
                 </a>
                 <?php } ?>
             </div>
             <div class="col-md-3  " >
-                <!-- Page drop down search component -->
-                <form  class="search" action="{{ url()->current() }}" method="get">
-                    <input type="hidden" name="page" value="1" />
-                    <div class="input-group">
-                        <input value="<?php echo get_value('search'); ?>" class="form-control page-search" type="text" name="search"  placeholder="Search" />
-                        <button class="btn btn-primary"><i class="material-icons">search</i></button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
@@ -82,10 +74,10 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-playerid" > Playerid</th>
-                                        <th class="td-sportsid" > Sportsid</th>
-                                        <th class="td-date" > Date</th>
-                                        <th class="td-location" > Location</th>
+                                        <th class="td-playerid" > खेलाडीको नाम</th>
+                                        <th class="td-sportsid" > खेलको नाम</th>
+                                        <th class="td-date" > मिति</th>
+                                        <th class="td-location" > स्थान</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -117,12 +109,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <?php } ?>
                                         <!--PageComponentStart-->
                                         <td class="td-playerid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player/view/$data[playerid]?subpage=1") ?>">
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player//$data[playerid]?subpage=1") ?>">
                                             <?php echo $data['player_playernamenepali'] ?>
                                         </a>
                                     </td>
                                     <td class="td-sportsid">
-                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
+                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports//$data[sportsid]?subpage=1") ?>">
                                         <?php echo $data['sports_sportsname'] ?>
                                     </a>
                                 </td>

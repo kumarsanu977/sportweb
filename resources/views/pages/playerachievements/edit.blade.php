@@ -45,7 +45,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="playerid">Playerid <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="playerid">खेलाडीको नाम छान्नुहोस:  <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-playerid-holder" class=" ">
@@ -72,7 +72,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="sportid">Sportid <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="sportid">खेलको नाम छान्नुहोस: <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-sportid-holder" class=" ">
@@ -99,7 +99,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="date">मिति <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-date-holder" class="input-group ">
@@ -112,7 +112,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="medal">Medal </label>
+                                        <label class="control-label" for="medal">पदक </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-medal-holder" class=" ">
@@ -124,7 +124,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="certificate">Certificate </label>
+                                        <label class="control-label" for="certificate">सर्टिफिकेट </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-certificate-holder" class=" ">

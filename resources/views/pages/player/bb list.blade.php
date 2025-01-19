@@ -28,14 +28,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class="row justify-content-between align-items-center gap-3">
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">खेलाडी विवरण</div>
+                        <div class="h5 font-weight-bold text-primary">Player</div>
                     </div>
-                </div> 
+                </div>
                 <div class="col-auto  " >
                     <?php if($can_add){ ?>
                     <a  class="btn btn-primary btn-block" href="<?php print_link("player/add", true) ?>" >
                     <i class="material-icons">add</i>                               
-                    नया खेलाडी दर्ता गनुहोस
+                    Add New Player 
                 </a>
                 <?php } ?>
             </div>
@@ -83,28 +83,27 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-playerid" > 
-                                        दर्ता नं:</th>
-                                        <th class="td-sportsid" > खेलको नाम:</th>
-                                        <th class="td-playernamenepali" > खेलाडीको नाम</th>
-                                        <th class="td-playernameenglish" > खेलाडीको नाम(In English)</th>
-                                        <th class="td-permanentaddress" > स्थायी ठेगाना</th>
-                                        <th class="td-temporaryaddress" > अस्थायी ठेगाना</th>
-                                        <th class="td-dob" > जन्म मिति</th>
-                                        <th class="td-citizenshipno" > नागरिकता नं</th>
-                                        <th class="td-qualification" > शैक्षिक योग्यता</th>
-                                        <th class="td-weight" > तौल</th>
-                                        <th class="td-height" > उचाइ</th>
-                                        <th class="td-schoolname" > स्कूल/कलेजको नाम</th>
-                                        <th class="td-playercontact" > खेलाडीको सम्पर्क नं</th>
-                                        <th class="td-fathersname" > पिताको नाम थर</th>
-                                        <th class="td-mothersname" > माताको नाम थर</th>
-                                        <th class="td-parentscontact" > पिता/माताको सम्पर्क नं</th>
-                                        <th class="td-coachname" > प्रशिक्षकको नाम</th>
-                                        <th class="td-coachcontact" > प्रशिक्षकको सम्पर्क नं</th>
-                                        <th class="td-signature" > हस्ताक्षार</th>
-                                        <th class="td-photo" > फोटो</th>
-                                        <th class="td-isapproved" > स्वीकृति असस्था</th>
+                                        <th class="td-playerid" > Playerid</th>
+                                        <th class="td-sportsid" > Sportsid</th>
+                                        <th class="td-playernamenepali" > Playernamenepali</th>
+                                        <th class="td-playernameenglish" > Playernameenglish</th>
+                                        <th class="td-permanentaddress" > Permanentaddress</th>
+                                        <th class="td-temporaryaddress" > Temporaryaddress</th>
+                                        <th class="td-dob" > Dob</th>
+                                        <th class="td-citizenshipno" > Citizenshipno</th>
+                                        <th class="td-qualification" > Qualification</th>
+                                        <th class="td-weight" > Weight</th>
+                                        <th class="td-height" > Height</th>
+                                        <th class="td-schoolname" > Schoolname</th>
+                                        <th class="td-playercontact" > Playercontact</th>
+                                        <th class="td-fathersname" > Fathersname</th>
+                                        <th class="td-mothersname" > Mothersname</th>
+                                        <th class="td-parentscontact" > Parentscontact</th>
+                                        <th class="td-coachname" > Coachname</th>
+                                        <th class="td-coachcontact" > Coachcontact</th>
+                                        <th class="td-signature" > Signature</th>
+                                        <th class="td-photo" > Photo</th>
+                                        <th class="td-isapproved" > Isapproved</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -139,7 +138,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <a href="<?php print_link("/player/view/$data[playerid]") ?>"><?php echo $data['playerid']; ?></a>
                                         </td>
                                         <td class="td-sportsid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports//$data[sportsid]?subpage=1") ?>">
                                             <?php echo $data['sports_sportsname'] ?>
                                         </a>
                                     </td>
@@ -201,28 +200,25 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             Html :: page_img($data['photo'], '50px', '50px', "small", 1); 
                                         ?>
                                     </td>
-                                    <td class="td-isapproved"><strong>
-                                        <?php
-                                            switch ($data['isapproved']) {
-                                            case 0:
-                                            echo 'Not Checked';
-                                            break;
-                                            case 1:
-                                            echo 'Approved';
-                                            break;
-                                            case 2:
-                                            echo 'Pending';
-                                            break;
-                                            case 3:
-                                            echo 'Not Approved';
-                                            break;
-                                            default:
-                                            echo 'Invalid Status';
-                                            break;
-                                            }
-                                        ?>
-                                        </strong>
-                                    </td>
+                                    <td class="td-isapproved"><?php
+                                        switch ($data['isapproved']) {
+                                        case 0:
+                                        echo 'Not Checked';
+                                        break;
+                                        case 1:
+                                        echo 'Approved';
+                                        break;
+                                        case 2:
+                                        echo 'Pending';
+                                        break;
+                                        case 3:
+                                        echo 'Not Approved';
+                                        break;
+                                        default:
+                                        echo 'Invalid Status';
+                                        break;
+                                        }
+                                    ?></td>
                                     <!--PageComponentEnd-->
                                     <td class="td-btn">
                                         <div class="dropdown" >
@@ -282,14 +278,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     <i class="material-icons">delete_sweep</i> Delete Selected
                     </button>
                     <?php } ?>
-                    <div class="dropup export-btn-holder">
-                        <button  class="btn  btn-sm btn-outline-primary dropdown-toggle" title="Export" type="button" data-bs-toggle="dropdown">
-                        <i class="material-icons">save</i> 
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <?php Html :: export_menus(['pdf', 'print', 'excel', 'csv']); ?>
-                        </div>
-                    </div>
                 </div>
                 <div class="col">   
                     <?php

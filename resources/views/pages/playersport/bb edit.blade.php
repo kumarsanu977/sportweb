@@ -13,7 +13,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     <?php
         if( $show_header == true ){
     ?>
-    <div  class="bg-light p-3 mb-3" > 
+    <div  class="bg-light p-3 mb-3" >
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto  back-btn-col" >
@@ -45,14 +45,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="playerid">खेलाडीको नाम <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="playerid">Playerid <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-playerid-holder" class=" ">
                                             <select required=""  id="ctrl-playerid" data-field="playerid" name="playerid"  placeholder="Select a value ..."    class="form-select" >
                                             <option value="">Select a value ...</option>
                                             <?php
-                                                $options = $comp_model->playerid_option_list() ?? [];
+                                                $options = $comp_model->playersport_playerid_option_list() ?? [];
                                                 foreach($options as $option){
                                                 $value = $option->value;
                                                 $label = $option->label ?? $value;
@@ -72,7 +72,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="sportsid">खेलको नाम <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="sportsid">Sportsid <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-sportsid-holder" class=" ">
@@ -99,7 +99,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="date">मिति <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-date-holder" class="input-group ">
@@ -112,11 +112,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="location">स्थान <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="location">Location </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-location-holder" class=" ">
-                                            <input id="ctrl-location" data-field="location"  value="<?php  echo $data['location']; ?>" type="text" placeholder="Enter Location"  required="" name="location"  class="form-control " />
+                                            <input id="ctrl-location" data-field="location"  value="<?php  echo $data['location']; ?>" type="text" placeholder="Enter Location"  name="location"  class="form-control " />
                                         </div>
                                     </div>
                                 </div>

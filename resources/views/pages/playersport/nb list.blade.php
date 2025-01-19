@@ -5,16 +5,16 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
     //check if current user role is allowed access to the pages
-    $can_add = $user->canAccess("playerachievements/add");
-    $can_edit = $user->canAccess("playerachievements/edit");
-    $can_view = $user->canAccess("playerachievements/view");
-    $can_delete = $user->canAccess("playerachievements/delete");
+    $can_add = $user->canAccess("playersport/add");
+    $can_edit = $user->canAccess("playersport/edit");
+    $can_view = $user->canAccess("playersport/view");
+    $can_delete = $user->canAccess("playersport/delete");
     $field_name = request()->segment(3);
     $field_value = request()->segment(4);
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = "Player Achievements"; //set dynamic page title
+    $pageTitle = "Player Sport"; //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -28,18 +28,26 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class="row justify-content-between align-items-center gap-3">
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">Player Achievements</div>
+                        <div class="h5 font-weight-bold text-primary">Player Sport</div>
                     </div>
                 </div>
                 <div class="col-auto  " >
                     <?php if($can_add){ ?>
-                    <a  class="btn btn-primary btn-block" href="<?php print_link("playerachievements/add", true) ?>" >
+                    <a  class="btn btn-primary btn-block" href="<?php print_link("playersport/add", true) ?>" >
                     <i class="material-icons">add</i>                               
-                    उपलब्धिहरु थप्नुहोस 
+                    Add New Player Sport 
                 </a>
                 <?php } ?>
             </div>
             <div class="col-md-3  " >
+                <!-- Page drop down search component -->
+                <form  class="search" action="{{ url()->current() }}" method="get">
+                    <input type="hidden" name="page" value="1" />
+                    <div class="input-group">
+                        <input value="<?php echo get_value('search'); ?>" class="form-control page-search" type="text" name="search"  placeholder="Search" />
+                        <button class="btn btn-primary"><i class="material-icons">search</i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -52,7 +60,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
         <div class="row ">
             <div class="col comp-grid " >
                 <div  class=" page-content" >
-                    <div id="playerachievements-list-records">
+                    <div id="playersport-list-records">
                         <div id="page-main-content" class="table-responsive">
                             <div class="ajax-page-load-indicator" style="display:none">
                                 <div class="text-center d-flex justify-content-center load-indicator">
@@ -74,11 +82,10 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-playerid" > खेलाडीको ना</th>
-                                        <th class="td-sportid" > खेलको नाम</th>
-                                        <th class="td-date" > मिति</th>
-                                        <th class="td-medal" > पदक</th>
-                                        <th class="td-certificate" > सर्टिफिकेट</th>
+                                        <th class="td-playerid" > Playerid</th>
+                                        <th class="td-sportsid" > Sportsid</th>
+                                        <th class="td-date" > Date</th>
+                                        <th class="td-location" > Location</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -90,7 +97,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <?php
                                         $counter = 0;
                                         foreach($records as $data){
-                                        $rec_id = ($data['prizeid'] ? urlencode($data['prizeid']) : null);
+                                        $rec_id = ($data['playersportid'] ? urlencode($data['playersportid']) : null);
                                         $counter++;
                                         //check if user is the owner of the record.
                                         $is_record_owner = ($data['uid'] == $user->uid);
@@ -103,32 +110,27 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <td class=" td-checkbox">
                                             <?php if($can_delete_record) { ?>
                                             <label class="form-check-label">
-                                            <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['prizeid'] ?>" type="checkbox" />
+                                            <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['playersportid'] ?>" type="checkbox" />
                                             </label>
                                             <?php } ?>
                                         </td>
                                         <?php } ?>
                                         <!--PageComponentStart-->
                                         <td class="td-playerid">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player//$data[playerid]?subpage=1") ?>">
+                                            <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("player/view/$data[playerid]?subpage=1") ?>">
                                             <?php echo $data['player_playernamenepali'] ?>
                                         </a>
                                     </td>
-                                    <td class="td-sportid">
-                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports//$data[sportid]?subpage=1") ?>">
+                                    <td class="td-sportsid">
+                                        <a size="sm" class="btn btn-sm btn btn-secondary" href="<?php print_link("sports/view/$data[sportsid]?subpage=1") ?>">
                                         <?php echo $data['sports_sportsname'] ?>
                                     </a>
                                 </td>
                                 <td class="td-date">
                                     <?php echo  $data['date'] ; ?>
                                 </td>
-                                <td class="td-medal">
-                                    <?php echo  $data['medal'] ; ?>
-                                </td>
-                                <td class="td-certificate">
-                                <?php 
-                                        Html :: page_img($data['certificate'], '50px', '50px', "small", 1); 
-                                    ?>
+                                <td class="td-location">
+                                    <?php echo  $data['location'] ; ?>
                                 </td>
                                 <!--PageComponentEnd-->
                                 <td class="td-btn">
@@ -138,12 +140,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </button>
                                         <ul class="dropdown-menu">
                                             <?php if($can_edit_record){ ?>
-                                            <a class="dropdown-item "   href="<?php print_link("playerachievements/edit/$rec_id"); ?>" >
+                                            <a class="dropdown-item "   href="<?php print_link("playersport/edit/$rec_id"); ?>" >
                                             <i class="material-icons">edit</i> Edit
                                         </a>
                                         <?php } ?>
                                         <?php if($can_delete_record){ ?>
-                                        <a class="dropdown-item record-delete-btn" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal" href="<?php print_link("playerachievements/delete/$rec_id"); ?>" >
+                                        <a class="dropdown-item record-delete-btn" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal" href="<?php print_link("playersport/delete/$rec_id"); ?>" >
                                         <i class="material-icons">delete_sweep</i> Delete
                                     </a>
                                     <?php } ?>
@@ -180,7 +182,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class="row align-items-center justify-content-between">    
                 <div class="col-md-auto d-flex">    
                     <?php if($can_delete){ ?>
-                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("playerachievements/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("playersport/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                     <i class="material-icons">delete_sweep</i> Delete Selected
                     </button>
                     <?php } ?>
